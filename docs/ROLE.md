@@ -36,3 +36,15 @@ functioning correctly, then recommend bounded recovery actions.
 - Health-check and memory-monitor coverage
 - Recovery recommendation success rate
 - No unauthorised production or memory changes
+
+## Implemented diagnostic targets
+
+- Orin, Scribe, and Rick health endpoints
+- Kingdom orchestration API health endpoint
+- Turso configuration and read-only connectivity
+- Telegram bot configuration
+- Tembusu Circle Gatsby Markdown content and build artifact presence
+
+Diagnostic evidence must exclude tokens, database URLs containing credentials,
+private message content, and private business content. Security-related findings
+are flagged for Rick; Bastion does not make Rick's policy decision.

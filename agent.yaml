@@ -4,7 +4,7 @@ kind: AgentManifest
 metadata:
   id: bastion
   displayName: Bastion
-  version: 0.1.0
+  version: 0.2.0
   description: Agent, infrastructure and memory diagnosis for Kingdom of PAL.
 
 spec:
@@ -16,6 +16,7 @@ spec:
     - integration-diagnosis
     - infrastructure-diagnosis
     - memory-health-diagnosis
+    - tembusu-circle-build-diagnosis
   contracts:
     version: v1alpha1
     accepts:
@@ -57,4 +58,7 @@ spec:
     method: GET
     path: /health
   runtime:
-    status: planned
+    status: ready
+    language: javascript
+    framework: openai-agents-sdk-compatible
+    entrypoint: src/server.mjs
