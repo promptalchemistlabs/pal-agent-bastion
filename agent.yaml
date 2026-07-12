@@ -1,0 +1,60 @@
+apiVersion: kingdom.pal/v1alpha1
+kind: AgentManifest
+
+metadata:
+  id: bastion
+  displayName: Bastion
+  version: 0.1.0
+  description: Agent, infrastructure and memory diagnosis for Kingdom of PAL.
+
+spec:
+  role: system-doctor
+  tier: core
+  repository: https://github.com/promptalchemistlabs/pal-agent-bastion
+  capabilities:
+    - agent-health-diagnosis
+    - integration-diagnosis
+    - infrastructure-diagnosis
+    - memory-health-diagnosis
+  contracts:
+    version: v1alpha1
+    accepts:
+      - task-request
+    returns:
+      - task-result
+  permissions:
+    - read:health-metadata
+    - read:operational-logs
+    - write:diagnostic-reports
+    - write:recovery-recommendations
+  memory:
+    reads:
+      - founders-charter
+      - active-policies
+      - health-metadata
+      - operational-logs
+      - memory-system-metadata
+    writes:
+      - private-diagnostic-memory
+      - diagnostic-reports
+      - recovery-recommendations
+  boundaries:
+    prohibited:
+      - Modify production systems without founder approval.
+      - Perform destructive recovery automatically.
+      - Expose credentials or private configuration.
+      - Inspect private business content without temporary approved access.
+      - Alter or delete memory records without approval.
+  approval:
+    policy: default-risk-policy
+    requiredFor:
+      - apply-operational-fix
+      - modify-production
+      - inspect-private-content
+      - alter-memory-records
+      - any-high-risk-action
+  healthcheck:
+    method: GET
+    path: /health
+  runtime:
+    status: planned
